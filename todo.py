@@ -3,7 +3,8 @@ from os import environ
 import json
 import todoist
 
-TODOIST_ACCESS_TOKEN = environ["TODOIST_ACCESS_TOKEN"]
+# TODOIST_ACCESS_TOKEN = environ["TODOIST_ACCESS_TOKEN"]
+TODOIST_ACCESS_TOKEN = "27b107743d2f40bfb420ef9c2cc5f270e71bc79f"
 api = todoist.TodoistAPI(TODOIST_ACCESS_TOKEN)
 
 class Todo:
@@ -60,10 +61,16 @@ class Todo:
     return -1
 
 
-  def create_todo_task(self, ticket_title, ticket_desc, project_id, section_id):
-    print(api.items.add(
-      priority=1,
-      content=ticket_title,
-      project_id=project_id,
-      section_id=section_id
+  def create_todo_task(self, ticket_title, ticket_desc, ticket_priority, project_id, section_id):
+    item_id = api.items.add(
+        content=ticket_title,
+        project_id=project_id,
+        priority=ticket_priority,
+        section_id=section_id
+      )["id"]
+
+    print(item_id)
+    print(api.notes.add(
+      item_id = item_id,
+      content = ticket_desc
     ))
