@@ -3,8 +3,7 @@ from os import environ
 import json
 import todoist
 
-# TODOIST_ACCESS_TOKEN = environ["TODOIST_ACCESS_TOKEN"]
-TODOIST_ACCESS_TOKEN = "27b107743d2f40bfb420ef9c2cc5f270e71bc79f"
+TODOIST_ACCESS_TOKEN = environ["TODOIST_ACCESS_TOKEN"]
 api = todoist.TodoistAPI(TODOIST_ACCESS_TOKEN)
 
 class Todo:
